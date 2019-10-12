@@ -25,7 +25,8 @@ def random_exercises(q_c, m_v):
         readable_str = question.to_readable(ordinary)
         e_open.write(f'{i+1}、{readable_str}\n')
 
-        answer = question.count_ans(post)
+        ans = question.count_ans(post)
+        answer = question.to_with_fraction(ans)  # 转成带分数
         a_open.write(f'{i+1}、{answer}\n')
     e_open.close()
     a_open.close()
@@ -53,7 +54,8 @@ def make_standard(e_p):
         ordinary = question.to_unreadable(ques_str)
         post = question.ordinary_to_post(ordinary)
         sa = question.count_ans(post)
-        sa_open.write(f'{ques_num}、{sa}\n')
+        standard = question.to_with_fraction(sa)
+        sa_open.write(f'{ques_num}、{standard}\n')
 
     e_open.close()
     sa_open.close()
@@ -103,7 +105,7 @@ if __name__ == '__main__':
     Myapp.exe -e C:/题目.txt -a D:/答案.txt
     对C盘下的题目和D盘下的答案对比
 ------------------------------------------------------------
-版本：--v1.0  2019-10-11 17:29:23
+版本：--v1.1  2019-10-12 19:49:40
 作者：Li Guangzheng     3117004660
 　　　Wu Zihao          3117004671
 ------------------------------------------------------------
